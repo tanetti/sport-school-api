@@ -4,13 +4,19 @@ const cors = require("cors");
 
 const app = express();
 
+const corsProductionOptions = {
+  origin: process.env.CORS_ORIGIN,
+  optionsSuccessStatus: 200,
+};
+const corsOptions =
+  app.get("env") === "development" ? null : corsProductionOptions;
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 const homeRouter = require("./routes/homeRouter");
 const apiRouter = require("./routes/apiRouter");
 
 app.use(logger(formatsLogger));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/", homeRouter);

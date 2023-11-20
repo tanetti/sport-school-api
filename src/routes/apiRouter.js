@@ -10,7 +10,7 @@ const requestController = require("../controllers/request");
 apiRouter.post("/wakeup", wakeupController);
 
 apiRouter.post(
-  "/debug",
+  "/request",
   requestBodyValidation,
   debugMessageTextCreation,
   requestController

@@ -1,15 +1,15 @@
 const axios = require("axios");
 
 const botKey = process.env.BOT_KEY;
-const debugChatId = process.env.DEBUG_CHAT_ID;
 
 const baseUrl = `https://api.telegram.org/bot${botKey}/sendMessage`;
-const postParams = {
-  chat_id: debugChatId,
-  parse_mode: "html",
-};
 
-const sendRequestMessage = async (text) => {
+const sendRequestMessage = async ({ chatId, text }) => {
+  const postParams = {
+    chat_id: chatId,
+    parse_mode: "html",
+  };
+
   await axios.post(baseUrl, { ...postParams, text });
 };
 

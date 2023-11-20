@@ -1,8 +1,15 @@
 const sendRequestMessage = require("../services/sendRequestMessage");
+const getChatId = require("../utilities/getChatId");
 
 const requestController = async (req, res) => {
+  const {
+    body: { section },
+  } = req;
+
   try {
-    await sendRequestMessage(req.requestText);
+    const chatId = getChatId(section);
+
+    await sendRequestMessage({ chatId, text: req.requestText });
 
     res.json({
       status: "success",

@@ -9,8 +9,8 @@ const postParams = {
   parse_mode: "html",
 };
 
-const sendDebugMessage = async (text) => {
+const sendRequestMessage = async (text) => {
   await axios.post(baseUrl, { ...postParams, text });
 };
 
-module.exports = sendDebugMessage;
+module.exports = sendRequestMessage;

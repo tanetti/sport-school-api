@@ -1,22 +1,19 @@
 const express = require("express");
 const apiRouter = new express.Router();
 
-const debugBodyValidation = require("../middlewares/debugBodyValidation/validation");
+const requestBodyValidation = require("../middlewares/requestBodyValidation/validation");
 const debugMessageTextCreation = require("../middlewares/debugMessageTextCreation");
 
 const wakeupController = require("../controllers/wakeup");
-const debugMessageController = require("../controllers/debugMessage");
-const debugUserMessageController = require("../controllers/debugUserMessage");
+const requestController = require("../controllers/request");
 
 apiRouter.post("/wakeup", wakeupController);
 
 apiRouter.post(
   "/debug",
-  debugBodyValidation,
+  requestBodyValidation,
   debugMessageTextCreation,
-  debugMessageController
+  requestController
 );
-
-apiRouter.post("/debug-user", debugUserMessageController);
 
 module.exports = apiRouter;

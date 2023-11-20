@@ -1,8 +1,8 @@
-const sendDebugMessage = require("../services/sendDebugMessage");
+const sendRequestMessage = require("../services/sendRequestMessage");
 
-const debugMessageController = async (req, res) => {
+const requestController = async (req, res) => {
   try {
-    await sendDebugMessage(req.debugText);
+    await sendRequestMessage(req.requestText);
 
     res.json({
       status: "success",
@@ -16,4 +16,4 @@ const debugMessageController = async (req, res) => {
   }
 };
 
-module.exports = debugMessageController;
+module.exports = requestController;

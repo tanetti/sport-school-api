@@ -1,13 +1,12 @@
-const debugMessageTextCreation = (req, res, next) => {
+const requestMessageTextCreation = (req, res, next) => {
   const {
-    body: { name, phone, message },
+    body: { section, name, phone },
   } = req;
 
-  req.debugText = `<b>New message from DEBUG branch!</b>
-  \n<i> - Client name:</i>  <b>${name}</b>\n<i> - Phone number:</i>  <a href="tel:${phone}">${phone}</a>
-  \n${message}`;
+  req.requestText = `<b>Запит до секції ${section}'</b>
+  \n<i> - Client name:</i>  <b>${name}</b>\n<i> - Phone number:</i>  <a href="tel:${phone}">${phone}</a>`;
 
   next();
 };
 
-module.exports = debugMessageTextCreation;
+module.exports = requestMessageTextCreation;

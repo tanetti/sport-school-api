@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const botKey = process.env.MESSENGER_BOT_KEY;
+const botKey = process.env.BOT_KEY;
 const debugChatId = process.env.DEBUG_CHAT_ID;
 
 const baseUrl = `https://api.telegram.org/bot${botKey}/sendMessage`;

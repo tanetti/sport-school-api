@@ -1,11 +1,19 @@
 const joi = require("joi");
+const SECTIONS = require("../../constants/sections");
+
+const validSections = SECTIONS.map(({ name }) => name);
 
 const requestBodyValidationSchema = joi.object({
-  section: joi.string().required().messages({
-    "string.base": "Section format mismatch",
-    "string.empty": "Section is empty",
-    "any.required": "Section is required",
-  }),
+  section: joi
+    .string()
+    .required()
+    .valid(...validSections)
+    .messages({
+      "string.base": "Section format mismatch",
+      "string.empty": "Section is empty",
+      "any.only": "Section is invalid",
+      "any.required": "Section is required",
+    }),
 
   name: joi.string().min(2).max(30).required().messages({
     "string.base": "Name format mismatch",

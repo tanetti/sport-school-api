@@ -1,6 +1,6 @@
 {
-  "name": "telegram-mesenger",
-  "version": "1.0.5",
+  "name": "sport-school-api",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanetti/telegram-messenger.git"
+    "url": "git+https://github.com/tanetti/sport-school-api.git"
   },
   "author": "tanetti",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tanetti/telegram-messenger/issues"
+    "url": "https://github.com/tanetti/sport-school-api/issues"
   },
-  "homepage": "https://github.com/tanetti/telegram-messenger#readme",
+  "homepage": "https://github.com/tanetti/sport-school-api#readme",
   "dependencies": {
     "axios": "^1.5.1",
     "cors": "^2.8.5",

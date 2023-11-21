@@ -6,9 +6,11 @@ const requestBodyValidation = (req, res, next) => {
   if (error) {
     const [firstError] = error.details;
 
+    console.log(`Validation ERROR - ${firstError.message}`);
+
     return res
       .status(400)
-      .json({ status: "error", message: firstError.message });
+      .json({ status: "error", message: "Parameter error" });
   }
 
   next();

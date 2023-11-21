@@ -9,7 +9,7 @@ const getCorsSettings = (environment) => {
             if (corsWhitelist.indexOf(origin) !== -1) {
               callback(null, true);
             } else {
-              callback(new Error("Not allowed"));
+              callback(new Error("CORS"));
             }
           },
           optionsSuccessStatus: 200,

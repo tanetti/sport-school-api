@@ -2,7 +2,6 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const getCorsSettings = require("./utilities/getCorsSettings");
-const homeRouter = require("./routes/homeRouter");
 const apiRouter = require("./routes/apiRouter");
 
 const app = express();
@@ -15,8 +14,6 @@ app.use(logger(formatsLogger));
 app.use(cors(corsSettings));
 app.use(express.json());
 
-app.use("/", homeRouter);
-
 app.use("/api", apiRouter);
 
 app.use((req, res) => {
@@ -24,6 +21,9 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
+  if (err.message === "CORS")
+    return res.status(403).json({ status: "error", message: "Not allowed" });
+
   res.status(500).json({ status: "error", message: err.message });
 });
 

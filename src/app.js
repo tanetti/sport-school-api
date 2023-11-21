@@ -1,15 +1,18 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
+const getCorsSettings = require("./utilities/getCorsSettings");
 const homeRouter = require("./routes/homeRouter");
 const apiRouter = require("./routes/apiRouter");
 
 const app = express();
+const environment = app.get("env");
 
-const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+const formatsLogger = environment === "development" ? "dev" : "short";
+const corsSettings = getCorsSettings(environment);
 
 app.use(logger(formatsLogger));
-app.use(cors());
+app.use(cors(corsSettings));
 app.use(express.json());
 
 app.use("/", homeRouter);

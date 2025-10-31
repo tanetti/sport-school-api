@@ -3,15 +3,18 @@ const getCorsSettings = (environment) => {
 
   const corsSettings =
     environment === "development"
-      ? null
+      ? ["*"]
       : {
           origin: function (origin, callback) {
-            if (corsWhitelist.indexOf(origin) !== -1) {
+            if (!origin || corsWhitelist.indexOf(origin) !== -1) {
               callback(null, true);
             } else {
               callback(new Error("CORS"));
             }
           },
+          methods: "GET,POST,PUT,PATCH,DELETE",
+          allowedHeaders: "Content-Type, Authorization, Client-App-Version",
+          credentials: true,
           optionsSuccessStatus: 200,
         };
 
